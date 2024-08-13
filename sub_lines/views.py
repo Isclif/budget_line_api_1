@@ -83,7 +83,8 @@ class UpdateExpenseView(APIView):
                     sublines_to_update.save()
 
                 else:
-                    return Response({"error": "The amount of the expense must not exceed the amount of the sub-line or this subline has exceeded its amount to be spent."}, status=status.HTTP_400_BAD_REQUEST)
+                    return Response({"error": "The amount of the expense must not exceed the amount of the sub-line or this subline has exceeded its amount to be spent."}, status=status.HTTP_200_OK)
+                    # return Response({"error": "The amount of the expense must not exceed the amount of the sub-line or this subline has exceeded its amount to be spent."}, status=status.HTTP_400_BAD_REQUEST)
                 
                 remaning_instances = SubLines.objects.all()
                 serializer = CreateReadDeleteSubLineSerializer(remaning_instances, many=True)
